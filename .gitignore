@@ -15,3 +15,5 @@ web-build/
 
 # my own stuff
 .git_orig
+rate-repository-api
+.env
