@@ -21,7 +21,6 @@ const RepositoryList = () => {
   // eslint-disable-next-line no-unused-vars
   const { data, error, loading } = useQuery(GET_REPOSITORIES, { fetchPolicy: 'cache-and-network' });
 
-  console.log(loading);
   if (loading) {
     return <></>;
   }
