@@ -1,3 +1,7 @@
+import React from 'react';
+import { render } from '@testing-library/react-native';
+import RepositoryListContainer from '../../components/RepositoryListContainer';
+
 describe('RepositoryList', () => {
   describe('RepositoryListContainer', () => {
     it('renders repository information correctly', () => {
@@ -45,6 +49,28 @@ describe('RepositoryList', () => {
       };
 
       // Add your test code here
+      // eslint-disable-next-line no-unused-vars
+      const { debug, getAllByTestId } = render(<RepositoryListContainer repositories={repositories} />);
+      const nodes = repositories.edges.map(r => r.node);
+      const fullNames = getAllByTestId('fullName');
+      const descriptions = getAllByTestId('description');
+      const languages = getAllByTestId('language');
+      const stars = getAllByTestId('Stars');
+      const forks = getAllByTestId('Forks');
+      const reviews = getAllByTestId('Reviews');
+      const ratings = getAllByTestId('Rating');
+      expect(fullNames.length).toBe(nodes.length);
+      for (let i = 0; i < nodes.length; i++) {
+        expect(fullNames[i]).toHaveTextContent(nodes[i].fullName);
+        expect(descriptions[i]).toHaveTextContent(nodes[i].description);
+        expect(languages[i]).toHaveTextContent(nodes[i].language);
+      }
+      expect(stars[0]).toHaveTextContent('21.9k');
+      expect(forks[0]).toHaveTextContent('1.6k');
+      expect(forks[1]).toHaveTextContent('69');
+      expect(reviews[1]).toHaveTextContent('3');
+      expect(ratings[0]).toHaveTextContent('88');
+      expect(ratings[1]).not.toHaveTextContent('88');
     });
   });
 });

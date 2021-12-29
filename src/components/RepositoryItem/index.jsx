@@ -20,10 +20,10 @@ const RepoTitle = ({ ownerAvatarUrl, fullName, description, language }) => {
     <View style={styles.repoTitle}>
       <RepoAvatar ownerAvatarUrl={ownerAvatarUrl} />
       <View style={styles.titleBox}>
-        <Text fontWeight='bold' style={styles.titleBoxText}>{fullName}</Text>
-        <Text color='textSecondary' style={styles.titleBoxText}>{description}</Text>
+        <Text fontWeight='bold' style={styles.titleBoxText} testID='fullName'>{fullName}</Text>
+        <Text color='textSecondary' style={styles.titleBoxText} testID='description'>{description}</Text>
         <View style={styles.languagePill}>
-          <Text style={styles.languagePillText}>{language}</Text>
+          <Text style={styles.languagePillText} testID='language'>{language}</Text>
         </View>
       </View>
     </View>

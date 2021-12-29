@@ -12,12 +12,7 @@ const RepositoryList = () => {
     return <></>;
   }
 
-  // Get the nodes from the edges array
-  const repositoryNodes = data
-    ? data.repositories.edges.map(edge => edge.node)
-    : [];
-
-  return <RepositoryListContainer repositories={repositoryNodes} />;
+  return <RepositoryListContainer repositories={data.repositories} />;
 };
 
 export default RepositoryList;
