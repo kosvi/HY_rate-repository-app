@@ -17,4 +17,4 @@ web-build/
 .git_orig
 rate-repository-api
 .env
-src/__test__/foo.js
+src/__tests__/foo.js
