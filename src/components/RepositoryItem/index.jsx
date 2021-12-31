@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Pressable } from 'react-native';
 import Text from '../Text';
 import styles from './styles';
 import Stats from './Stats';
@@ -30,7 +30,8 @@ const RepoTitle = ({ ownerAvatarUrl, fullName, description, language }) => {
   );
 };
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, openRepo }) => {
+
   const {
     fullName,
     description,
@@ -39,14 +40,17 @@ const RepositoryItem = ({ item }) => {
     forksCount,
     reviewCount,
     ratingAverage,
-    ownerAvatarUrl
+    ownerAvatarUrl,
+    id
   } = item;
 
   return (
-    <View style={styles.container}>
-      <RepoTitle ownerAvatarUrl={ownerAvatarUrl} fullName={fullName} description={description} language={language} />
-      <Stats stargazersCount={stargazersCount} forksCount={forksCount} reviewCount={reviewCount} ratingAverage={ratingAverage} />
-    </View>
+    <Pressable onPress={() => openRepo(id)}>
+      <View style={styles.container}>
+        <RepoTitle ownerAvatarUrl={ownerAvatarUrl} fullName={fullName} description={description} language={language} />
+        <Stats stargazersCount={stargazersCount} forksCount={forksCount} reviewCount={reviewCount} ratingAverage={ratingAverage} />
+      </View>
+    </Pressable>
   );
 };
 

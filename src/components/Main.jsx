@@ -7,6 +7,7 @@ import AppBar from './AppBar';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import RepositoryItemPage from './RepositoryItemPage';
+import { useRouteMatch } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +17,10 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+
+  const match = useRouteMatch('/repo/:id');
+  console.log(match);
+  
   return (
     <View style={styles.container}>
       <AppBar />
@@ -26,7 +31,7 @@ const Main = () => {
         <Route path='/signout'>
           <SignOut />
         </Route>
-        <Route path='/id'>
+        <Route path='/repo/:id'>
           <RepositoryItemPage />
         </Route>
         <Route path='/' exact>

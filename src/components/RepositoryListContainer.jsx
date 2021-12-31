@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import theme from '../theme';
+import { useHistory } from 'react-router-native';
 
 const styles = StyleSheet.create({
   separator: {
@@ -14,17 +15,21 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryListContainer = ({ repositories }) => {
 
+  let history = useHistory();
   // Get the nodes from the edges array
   const repositoryNodes = repositories
     ? repositories.edges.map(edge => edge.node)
     : [];
 
+  const openRepo = (id) => {
+    history.push(`/repo/${id}`);
+  };
 
   return (
     <FlatList
       data={repositoryNodes}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={RepositoryItem}
+      renderItem={({ item }) => <RepositoryItem item={item} openRepo={openRepo} />}
     />
   );
 };

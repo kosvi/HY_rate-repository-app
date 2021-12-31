@@ -33,7 +33,6 @@ const AppBar = () => {
         <AppBarTab text='Repositories' tabPath='/' action={() => console.log('press')} />
         {!data.authorizedUser && <AppBarTab text='Sign in' tabPath='/signin' action={() => console.log('sign in')} />}
         {data.authorizedUser && <AppBarTab text='Sign out' tabPath='/signout' action={() => console.log('sign out')} />}
-        <AppBarTab text='foo' tabPath='/id' action={() => console.log('this should be removed')} />
       </ScrollView>
     </View>
   );
