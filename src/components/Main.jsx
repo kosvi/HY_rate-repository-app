@@ -7,7 +7,8 @@ import AppBar from './AppBar';
 import SignIn from './SignIn';
 import SignOut from './SignOut';
 import RepositoryItemPage from './RepositoryItemPage';
-import { useRouteMatch } from 'react-router-native';
+import ReviewForm from './ReviewForm';
+// import { useRouteMatch } from 'react-router-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,9 +19,8 @@ const styles = StyleSheet.create({
 
 const Main = () => {
 
-  const match = useRouteMatch('/repo/:id');
-  console.log(match);
-  
+  //  const match = useRouteMatch('/repo/:id');
+
   return (
     <View style={styles.container}>
       <AppBar />
@@ -33,6 +33,9 @@ const Main = () => {
         </Route>
         <Route path='/repo/:id'>
           <RepositoryItemPage />
+        </Route>
+        <Route path='/addReview'>
+          <ReviewForm />
         </Route>
         <Route path='/' exact>
           <RepositoryList />
