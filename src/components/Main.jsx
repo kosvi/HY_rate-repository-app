@@ -8,6 +8,7 @@ import SignIn from './SignIn';
 import SignOut from './SignOut';
 import RepositoryItemPage from './RepositoryItemPage';
 import ReviewForm from './ReviewForm';
+import SignUp from './SignUp';
 // import { useRouteMatch } from 'react-router-native';
 
 const styles = StyleSheet.create({
@@ -27,6 +28,9 @@ const Main = () => {
       <Switch>
         <Route path="/signin">
           <SignIn />
+        </Route>
+        <Route path='/signup'>
+          <SignUp />
         </Route>
         <Route path='/signout'>
           <SignOut />

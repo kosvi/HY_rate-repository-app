@@ -27,3 +27,14 @@ export const ADD_REVIEW = gql`
     }
   }
 `;
+
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $password: String!) {
+    createUser(user: {username: $username, password: $password}) {
+      id,
+      username,
+      createdAt,
+      reviewCount
+    }
+  }
+`;
