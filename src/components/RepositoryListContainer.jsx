@@ -2,7 +2,7 @@ import React from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import theme from '../theme';
-import { useHistory } from 'react-router-native';
+// import { useHistory } from 'react-router-native';
 
 const styles = StyleSheet.create({
   separator: {
@@ -13,25 +13,31 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories }) => {
+// const RepositoryListContainer = ({ repositories }) => {
+export class RepositoryListContainer extends React.Component {
 
-  let history = useHistory();
-  // Get the nodes from the edges array
-  const repositoryNodes = repositories
-    ? repositories.edges.map(edge => edge.node)
-    : [];
+  render() {
 
-  const openRepo = (id) => {
-    history.push(`/repo/${id}`);
-  };
+    const props = this.props;
 
-  return (
-    <FlatList
-      data={repositoryNodes}
-      ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <RepositoryItem item={item} openRepo={openRepo} />}
-    />
-  );
-};
+    // let history = useHistory();
+    // Get the nodes from the edges array
+    const repositoryNodes = props.repositories
+      ? props.repositories.edges.map(edge => edge.node)
+      : [];
 
-export default RepositoryListContainer;
+    const openRepo = (id) => {
+      props.history.push(`/repo/${id}`);
+    };
+
+    return (
+      <FlatList
+        data={repositoryNodes}
+        ItemSeparatorComponent={ItemSeparator}
+        renderItem={({ item }) => <RepositoryItem item={item} openRepo={openRepo} />}
+      />
+    );
+  }
+}
+
+// export default RepositoryListContainer;

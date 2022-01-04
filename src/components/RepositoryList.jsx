@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
-import RepositoryListContainer from './RepositoryListContainer';
+import { RepositoryListContainer } from './RepositoryListContainer';
 import { Picker } from '@react-native-picker/picker';
+import { useHistory } from 'react-router-native';
 
 const SortPicker = ({ setOrder, setDirection, setPickerSelection, selection }) => {
 
@@ -44,6 +45,7 @@ const RepositoryList = () => {
   const [direction, setDirection] = useState('DESC');
   const { data, loading } = useQuery(GET_REPOSITORIES, { variables: { orderBy: orderBy, orderDirection: direction }, fetchPolicy: 'cache-and-network' });
   const [pickerSelection, setPickerSelection] = useState();
+  let history = useHistory();
 
   if (loading) {
     return <></>;
@@ -52,7 +54,7 @@ const RepositoryList = () => {
   return (
     <View>
       <SortPicker setOrder={setOrderBy} setDirection={setDirection} setPickerSelection={setPickerSelection} selection={pickerSelection} />
-      <RepositoryListContainer repositories={data.repositories} />
+      <RepositoryListContainer repositories={data.repositories} history={history} />
     </View>
   );
 };

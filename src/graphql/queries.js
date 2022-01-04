@@ -23,6 +23,19 @@ export const GET_SINGLE_REPOSITORY = gql`
   }
 `;
 
+export const SEARCH_REPOSITORIES = gql`
+  ${REPOSITORY_DETAILS}
+  query searchRepos($key: String!) {
+    repositories(searchKeyword: $key) {
+      edges {
+        node {
+          ...RepositoryDetails
+        }
+      }
+    }
+  }
+`;
+
 export const READ_TOKEN = gql`
   query {
     authorizedUser {
