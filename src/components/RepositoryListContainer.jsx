@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, TextInput } from 'react-native';
 import RepositoryItem from './RepositoryItem';
 import theme from '../theme';
 import { Picker } from '@react-native-picker/picker';
@@ -17,37 +17,45 @@ export class RepositoryListContainer extends React.Component {
 
   renderHeader = () => {
 
-    const { setOrderBy, setDirection, setPickerSelection, pickerSelection } = this.props.toPicker;
+    const { setOrderBy, setDirection, setPickerSelection, pickerSelection, setFilterString, filterString } = this.props.toHeader;
 
     return (
-      <Picker
-        style={{ padding: 10 }}
-        selectedValue={pickerSelection}
-        onValueChange={(itemValue) => {
-          switch (itemValue) {
-            case '1':
-              setOrderBy('CREATED_AT');
-              setDirection('DESC');
-              setPickerSelection(itemValue);
-              break;
-            case '2':
-              setOrderBy('RATING_AVERAGE');
-              setDirection('DESC');
-              setPickerSelection(itemValue);
-              break;
-            case '3':
-              setOrderBy('RATING_AVERAGE');
-              setDirection('ASC');
-              setPickerSelection(itemValue);
-              break;
-            default:
-              break;
-          }
-        }}>
-        <Picker.Item label='Latest repositories' value='1' />
-        <Picker.Item label='Highest rated repositories' value='2' />
-        <Picker.Item label='Lowest rated repositories' value='3' />
-      </Picker>
+      <View>
+        <TextInput
+          style={{ padding: 10 }}
+          onChangeText={(text) => setFilterString(text)}
+          placeholder='Filter'
+          value={filterString}
+        />
+        <Picker
+          style={{ padding: 10 }}
+          selectedValue={pickerSelection}
+          onValueChange={(itemValue) => {
+            switch (itemValue) {
+              case '1':
+                setOrderBy('CREATED_AT');
+                setDirection('DESC');
+                setPickerSelection(itemValue);
+                break;
+              case '2':
+                setOrderBy('RATING_AVERAGE');
+                setDirection('DESC');
+                setPickerSelection(itemValue);
+                break;
+              case '3':
+                setOrderBy('RATING_AVERAGE');
+                setDirection('ASC');
+                setPickerSelection(itemValue);
+                break;
+              default:
+                break;
+            }
+          }}>
+          <Picker.Item label='Latest repositories' value='1' />
+          <Picker.Item label='Highest rated repositories' value='2' />
+          <Picker.Item label='Lowest rated repositories' value='3' />
+        </Picker>
+      </View>
     );
   };
 

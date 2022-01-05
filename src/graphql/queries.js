@@ -3,8 +3,8 @@ import { REPOSITORY_DETAILS } from './fragments';
 
 export const GET_REPOSITORIES = gql`
   ${REPOSITORY_DETAILS}
-  query repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
-    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
+  query repositories($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection, $key: String) {
+    repositories(orderBy: $orderBy, orderDirection: $orderDirection, searchKeyword: $key) {
       edges {
         node {
           ...RepositoryDetails
@@ -19,19 +19,6 @@ export const GET_SINGLE_REPOSITORY = gql`
   query getRepo($id: ID!) {
     repository(id: $id) {
       ...RepositoryDetails
-    }
-  }
-`;
-
-export const SEARCH_REPOSITORIES = gql`
-  ${REPOSITORY_DETAILS}
-  query searchRepos($key: String!) {
-    repositories(searchKeyword: $key) {
-      edges {
-        node {
-          ...RepositoryDetails
-        }
-      }
     }
   }
 `;
