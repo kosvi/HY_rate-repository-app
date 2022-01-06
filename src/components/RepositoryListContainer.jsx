@@ -78,7 +78,7 @@ export class RepositoryListContainer extends React.Component {
         renderItem={({ item }) => <RepositoryItem item={item} openRepo={openRepo} />}
         ListHeaderComponent={this.renderHeader}
         onEndReached={props.onEndReach}
-        onEndReachedThreshold={0.8}
+        onEndReachedThreshold={0.5}
       />
     );
   }

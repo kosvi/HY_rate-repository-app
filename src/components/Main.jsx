@@ -9,6 +9,7 @@ import SignOut from './SignOut';
 import RepositoryItemPage from './RepositoryItemPage';
 import ReviewForm from './ReviewForm';
 import SignUp from './SignUp';
+import UserReviews from './UserReviews';
 // import { useRouteMatch } from 'react-router-native';
 
 const styles = StyleSheet.create({
@@ -40,6 +41,9 @@ const Main = () => {
         </Route>
         <Route path='/addReview'>
           <ReviewForm />
+        </Route>
+        <Route path='/userreviews'>
+          <UserReviews />
         </Route>
         <Route path='/' exact>
           <RepositoryList />

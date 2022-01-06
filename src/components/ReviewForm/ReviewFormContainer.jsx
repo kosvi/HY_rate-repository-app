@@ -42,7 +42,7 @@ const NewReviewForm = ({ onSubmit }) => {
       <FormikTextInput name='ownerName' placeholder='Repository owner name' />
       <FormikTextInput name='repositoryName' placeholder='Repository name' />
       <FormikTextInput name='rating' placeholder='Rating between 0 and 100' />
-      <FormikTextInput name='text' placeholder='Review' multiline='true' />
+      <FormikTextInput name='text' placeholder='Review' multiline={true} />
       <Pressable style={styles.button} onPress={onSubmit}>
         <Text fontWeight='bold' style={styles.buttonText}>Create a review</Text>
       </Pressable>

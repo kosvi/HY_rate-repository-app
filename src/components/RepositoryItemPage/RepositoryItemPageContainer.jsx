@@ -3,7 +3,7 @@ import { FlatList, View, StyleSheet } from 'react-native';
 
 import RepositoryItem from '../RepositoryItem';
 import RepoLink from './RepoLink';
-import Review from './Review';
+import Review from '../Review';
 import theme from '../../theme';
 
 const styles = StyleSheet.create({
@@ -25,7 +25,7 @@ const RepositoryItemPageContainer = ({ item, reviews }) => {
       {reviewArray.length > 0 && <ItemSeparator />}
       <FlatList
         data={reviewArray}
-        renderItem={({ item }) => <Review review={item} />}
+        renderItem={({ item }) => <Review review={item} displayAuthor={true} />}
         keyExtractor={({ id }) => id}
         ItemSeparatorComponent={ItemSeparator}
       />

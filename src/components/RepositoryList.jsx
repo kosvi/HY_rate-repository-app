@@ -15,7 +15,7 @@ const RepositoryList = () => {
   const [filterStringDebounce] = useDebounce(filterString, 500);
   //  const { data, loading } = useQuery(GET_REPOSITORIES, { variables: { orderBy: orderBy, orderDirection: direction, key: filterStringDebounce }, fetchPolicy: 'cache-and-network' });
   const { repositories, fetchMore, loading } = useRepositories({
-    first: 4,
+    first: 8,
     orderBy: orderBy,
     orderDirection: direction,
     key: filterStringDebounce
